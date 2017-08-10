@@ -167,7 +167,7 @@ SUN_OS_MODULES_NAMES_GROUPS = {
     ],
 }
 
-CACHE_DIRECTORY = os.path.join(os.environ['HOME'], '.py-in-stdlib-searcher')
+CACHE_DIRECTORY = os.path.join(os.environ['HOME'], '.py-stdlib-librarian')
 CACHE_FILENAME = 'search_cache{}.cch'
 CACHE_SIZE = 100
 CACHE = collections.deque()
@@ -368,7 +368,7 @@ def search_next_in_cache(name, cond_for_names=are_equal, src=CACHE, first=True):
                     return
 
 
-def search(name, condition_for_names, cache, modules_names_groups, first_only):
+def search(name, condition_for_names, cache, modules_names_groups, first):
     """
     Searches an object with a given name. 
     
@@ -378,14 +378,14 @@ def search(name, condition_for_names, cache, modules_names_groups, first_only):
     :param condition_for_names: a callback that must return a boolean value which indicates that the object was found.
     :param cache: a deque object which contains results of previous searches.
     :param modules_names_groups: a dictionary which will be used for searching if the object was not found in the cache. 
-    :param first_only: a boolean flag that indicates to return only the first searched object or not.
+    :param first: a boolean flag that indicates to return only the first searched object or not.
     :return: a list with found objects.
     """
-    if not first_only:
-        return list(search_next_in_modules_names_groups(name, condition_for_names, modules_names_groups, first_only))
-    search_results = list(search_next_in_cache(name, condition_for_names, cache, first_only))
+    if not first:
+        return list(search_next_in_modules_names_groups(name, condition_for_names, modules_names_groups, first))
+    search_results = list(search_next_in_cache(name, condition_for_names, cache, first))
     if len(search_results) == 0:
-        search_results = search_next_in_modules_names_groups(name, condition_for_names, modules_names_groups, first_only)
+        search_results = search_next_in_modules_names_groups(name, condition_for_names, modules_names_groups, first)
     return list(search_results)
 
 
