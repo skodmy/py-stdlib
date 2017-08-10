@@ -326,12 +326,12 @@ def are_similar(name0, name1):
     return name0.__name__ if hasattr(name0, '__name__') else name0.find(name1) != -1
 
 
-def search_in_modules_names_groups(name, condition_for_names=are_equal, src=STDLIB_MODULES_NAMES_GROUPS, first=True):
+def search_next_in_modules_names_groups(name, cond_for_names=are_equal, src=STDLIB_MODULES_NAMES_GROUPS, first=True):
     """
     Searches an object with a given name in a dictionary.
     
     :param name: searched object's name.
-    :param condition_for_names: a callback that must return a boolean value which indicates that the object was found.
+    :param cond_for_names: a callback that must return a boolean value which indicates that the object was found.
     :param src: a source for searching, must be a dictionary.
     :param first: a boolean flag that indicates to return only the first searched object or not.
     :return: a list with found objects.
@@ -342,7 +342,7 @@ def search_in_modules_names_groups(name, condition_for_names=are_equal, src=STDL
                 mdl = importlib.import_module(module_name)
                 mdl_items = mdl.__all__ if hasattr(mdl, '__all__') else mdl.__dict__
                 for mdl_item in mdl_items:
-                    if condition_for_names(mdl_item, name):
+                    if cond_for_names(mdl_item, name):
                         yield getattr(mdl, mdl_item)
                         if first:
                             return
@@ -350,19 +350,19 @@ def search_in_modules_names_groups(name, condition_for_names=are_equal, src=STDL
                 continue
 
 
-def search_in_cache(name, condition_for_names=are_equal, src=CACHE, first=True):
+def search_next_in_cache(name, cond_for_names=are_equal, src=CACHE, first=True):
     """
     Searches an object with a given name in a cache.
     
     :param name: searched object's name.
-    :param condition_for_names: a callback that must return a boolean value which indicates that the object was found.
+    :param cond_for_names: a callback that must return a boolean value which indicates that the object was found.
     :param src: a source for searching.
     :param first: a boolean flag that indicates to return only the first searched object or not.
     :return: a list with found objects.
     """
     for cached_item in src:
         if hasattr(cached_item, '__name__'):
-            if condition_for_names(cached_item.__name__, name):
+            if cond_for_names(cached_item.__name__, name):
                 yield cached_item
                 if first:
                     return
@@ -382,10 +382,10 @@ def search(name, condition_for_names, cache, modules_names_groups, first_only):
     :return: a list with found objects.
     """
     if not first_only:
-        return list(search_in_modules_names_groups(name, condition_for_names, modules_names_groups, first_only))
-    search_results = list(search_in_cache(name, condition_for_names, cache, first_only))
+        return list(search_next_in_modules_names_groups(name, condition_for_names, modules_names_groups, first_only))
+    search_results = list(search_next_in_cache(name, condition_for_names, cache, first_only))
     if len(search_results) == 0:
-        search_results = search_in_modules_names_groups(name, condition_for_names, modules_names_groups, first_only)
+        search_results = search_next_in_modules_names_groups(name, condition_for_names, modules_names_groups, first_only)
     return list(search_results)
 
 
