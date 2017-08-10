@@ -24,7 +24,7 @@ Works on both python2.7.x and python3.x.x versions.
 ## Usage examples
 ### Listing the standard library's contents
 1. Listing all contents:
-
+    ```
     python stdliblibrarian.py -l
     ==================================================
     String And Text Processing Services:
@@ -360,8 +360,9 @@ Works on both python2.7.x and python3.x.x versions.
           — nis
           — syslog
     ==================================================
-
+    ```
 2. Listing content of a specific group:
+    ```
     python stdliblibrarian.py -l string
     ==================================================
     String And Text Processing Services:
@@ -374,61 +375,61 @@ Works on both python2.7.x and python3.x.x versions.
           — readline
           — rlcompleter
     ==================================================
-
+    ```
 ### Search
 1. Simple search
-
+    ```
     python stdliblibrarian.py -s match
     match function found in re
-
+    ```
 2. Simple search of multiple items
-
+    ```
     python stdliblibrarian.py -s match compile fullmatch
     match function found in re
     compile function found in re
     fullmatch function found in re
-
+    ```
 2. Simple search within a specified group
-
+    ```
     python stdliblibrarian.py -s fullmatch -g text
     fullmatch function found in re
-
+    ```
 3. Simple search within a specified groups
-
+    ```
     python stdliblibrarian.py -s compile -g string language
     compile function found in py_compile
-
+    ```
 4. Simple search of multiple items within a specified groups
-
+    ```
     python stdliblibrarian.py -s compile match -g string language
     compile function found in py_compile
     match function found in re
-
+    ```
 5. Extended search
-
+    ```
     python stdliblibrarian.py -es ru
     run function found in subprocess
-
+    ```
 6. Extended search of multiple items within multiple groups
-
+    ```
     python stdliblibrarian.py -es ru call -g subproc str
     run function found in subprocess
     SSLSyscallError type found in ssl
-
+    ```
 7. Search all
-
+    ```
     python stdliblibrarian.py -as compile
     compile function found in re
     compile builtin_function_or_method found in builtins
     compile function found in py_compile
-
+    ```
 8. Search all within specified groups
-
+    ```
     python stdliblibrarian.py -as run -g conc net
     run function found in subprocess
-
+    ```
 8. Extended search all
-
+    ```
     python stdliblibrarian.py -eas compl
     set_completer builtin_function_or_method found in readline
     get_completer builtin_function_or_method found in readline
@@ -443,7 +444,7 @@ Works on both python2.7.x and python3.x.x versions.
     IncompleteRead type found in http.client
     complex type found in builtins
     enablerlcompleter function found in site
-
+    ```
 10. Extended search all within specified groups
     ```
     python stdliblibrarian.py -eas run -g conc net
