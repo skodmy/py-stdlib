@@ -381,6 +381,8 @@ def search(name, condition_for_names, cache, modules_names_groups, first_only):
     :param first_only: a boolean flag that indicates to return only the first searched object or not.
     :return: a list with found objects.
     """
+    if not first_only:
+        return list(search_in_modules_names_groups(name, condition_for_names, modules_names_groups, first_only))
     search_results = list(search_in_cache(name, condition_for_names, cache, first_only))
     if len(search_results) == 0:
         search_results = search_in_modules_names_groups(name, condition_for_names, modules_names_groups, first_only)
