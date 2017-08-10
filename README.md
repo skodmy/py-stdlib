@@ -24,6 +24,7 @@ Works on both python2.7.x and python3.x.x versions.
 ## Usage examples
 ### Listing the standard library's contents
 1. Listing all contents:
+"""
     python stdliblibrarian.py -l
     ==================================================
     String And Text Processing Services:
@@ -373,7 +374,7 @@ Works on both python2.7.x and python3.x.x versions.
           — readline
           — rlcompleter
     ==================================================
-
+"""
 ### Search
 1. Simple search
     python stdliblibrarian.py -s match
