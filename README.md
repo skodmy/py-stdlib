@@ -445,10 +445,11 @@ Works on both python2.7.x and python3.x.x versions.
     enablerlcompleter function found in site
 
 10. Extended search all within specified groups
-
+    ```
     python stdliblibrarian.py -eas run -g conc net
     run function found in subprocess
     _set_running_loop function found in asyncio.events
     _get_running_loop function found in asyncio.events
     LimitOverrunError type found in asyncio.streams
     run_coroutine_threadsafe function found in asyncio.tasks
+    ```
