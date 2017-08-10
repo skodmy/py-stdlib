@@ -224,7 +224,7 @@ def remove_from_groups_names_of_unavailable_modules(src=STDLIB_MODULES_NAMES_GRO
 remove_from_groups_names_of_unavailable_modules()
 
 
-def extract_modules_names_group_by(keyword, src=STDLIB_MODULES_NAMES_GROUPS):
+def extract_next_modules_names_group_by(keyword, src=STDLIB_MODULES_NAMES_GROUPS):
     """
     Extracts a modules names group by a given keyword. It's a generator.
     
@@ -474,7 +474,7 @@ def __main():
             print_groups_of_modules_names()
         else:
             for keyword in parsed_args.l:
-                for modules_names_group in extract_modules_names_group_by(keyword):
+                for modules_names_group in extract_next_modules_names_group_by(keyword):
                     print_groups_of_modules_names(modules_names_group)
     # here goes search section
     if parsed_args.s is not None:
@@ -484,7 +484,7 @@ def __main():
         if parsed_args.g is not None:
             modules_names_groups = {}
             for modules_names_group_name in parsed_args.g:
-                for modules_names_group in extract_modules_names_group_by(modules_names_group_name):
+                for modules_names_group in extract_next_modules_names_group_by(modules_names_group_name):
                     modules_names_groups.update(modules_names_group)
         for name_for_search in parsed_args.s:
             search_results = search(name_for_search, cond_4names, CACHE, modules_names_groups, first)
