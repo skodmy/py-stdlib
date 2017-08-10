@@ -376,7 +376,7 @@ Works on both python2.7.x and python3.x.x versions.
           — rlcompleter
     ==================================================
     ```
-### Search
+### Search an object by a name in the standard library
 1. Simple search
     ```
     python stdliblibrarian.py -s match
@@ -453,4 +453,75 @@ Works on both python2.7.x and python3.x.x versions.
     _get_running_loop function found in asyncio.events
     LimitOverrunError type found in asyncio.streams
     run_coroutine_threadsafe function found in asyncio.tasks
+    ```
+### Displaying information about an object from the standard library
+1. For a single object
+    ```
+    python stdliblibrarian.py -i re.match
+    ========================================================================================================================
+    ------------------------------------------------------------------------------------------------------------------------
+    NAME: match
+    ------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------
+    MODULE: re
+    ------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------
+    DOC:
+    Try to apply the pattern at the start of the string, returning
+        a match object, or None if no match was found.
+    ------------------------------------------------------------------------------------------------------------------------
+    ========================================================================================================================
+    ```
+2. For a multiple objects
+    ```
+    python stdliblibrarian.py -i subprocess.run re.fullmatch
+    ========================================================================================================================
+    ------------------------------------------------------------------------------------------------------------------------
+    NAME: run
+    ------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------
+    MODULE: subprocess
+    ------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------
+    DOC:
+    Run command with arguments and return a CompletedProcess instance.
+
+        The returned instance will have attributes args, returncode, stdout and
+        stderr. By default, stdout and stderr are not captured, and those attributes
+        will be None. Pass stdout=PIPE and/or stderr=PIPE in order to capture them.
+
+        If check is True and the exit code was non-zero, it raises a
+        CalledProcessError. The CalledProcessError object will have the return code
+        in the returncode attribute, and output & stderr attributes if those streams
+        were captured.
+
+        If timeout is given, and the process takes too long, a TimeoutExpired
+        exception will be raised.
+
+        There is an optional argument "input", allowing you to
+        pass a string to the subprocess's stdin.  If you use this argument
+        you may not also use the Popen constructor's "stdin" argument, as
+        it will be used internally.
+
+        The other arguments are the same as for the Popen constructor.
+
+        If universal_newlines=True is passed, the "input" argument must be a
+        string and stdout/stderr in the returned object will be strings rather than
+        bytes.
+
+    ------------------------------------------------------------------------------------------------------------------------
+    ========================================================================================================================
+    ========================================================================================================================
+    ------------------------------------------------------------------------------------------------------------------------
+    NAME: fullmatch
+    ------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------
+    MODULE: re
+    ------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------
+    DOC:
+    Try to apply the pattern to all of the string, returning
+        a match object, or None if no match was found.
+    ------------------------------------------------------------------------------------------------------------------------
+    ========================================================================================================================
     ```
