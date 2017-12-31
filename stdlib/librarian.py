@@ -167,7 +167,7 @@ SUN_OS_MODULES_NAMES_GROUPS = {
     ],
 }
 
-CACHE_DIRECTORY = os.path.join(os.environ['HOME'], '.py-stdlib-librarian')
+CACHE_DIRECTORY = os.path.join(os.environ['HOME'], '.py-stdlib')
 CACHE_FILENAME = 'search_cache{}.cch'
 CACHE_SIZE = 100
 CACHE = collections.deque()
