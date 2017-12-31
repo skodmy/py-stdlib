@@ -1,4 +1,4 @@
-# py-stdlib-librarian
+# py-stdlib
 A command-line utility which is primarily designed for fast searching of an object in the Python's standard library.
 Also it provides some other features like listing of the standard library's contents and displaying information about an object from the standard library.
 
@@ -6,9 +6,9 @@ Also it provides some other features like listing of the standard library's cont
 Works on both python2.7.x and python3.x.x versions.
 
 ## Usage
-    usage: stdliblibrarian.py [-h] [-l [group's name [group's name ...]]]
+    usage: python -m stdlib [-h] [-l [group's name [group's name ...]]]
                           [-s name [name ...]] [-g keyword [keyword ...]]
-                          [-i name [name ...]] [-a] [-e]
+                          [-i name [name ...]] [-a] [-e] [-shell]
 
     optional arguments:
       -h, --help            show this help message and exit
@@ -20,6 +20,7 @@ Works on both python2.7.x and python3.x.x versions.
       -i name [name ...]    show info about object with specified name
       -a, --all             all flag for listing or search
       -e, --extended        extended search that include similar items
+      -shell                starts extended interactive console
 
 ## Usage examples
 ### Listing the standard library's contents
