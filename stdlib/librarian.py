@@ -451,12 +451,13 @@ def __parse_args():
                              help="show info about object with specified name")
     args_parser.add_argument("-a", "--all", action='store_true', help="all flag for listing or search")
     args_parser.add_argument("-e", "--extended", action='store_true', help="extended search that include similar items")
+    args_parser.add_argument('-shell', action='store_true', help="starts extended interactive console")
     return args_parser.parse_args()
 
 
-def __main():
+def main():
     """
-    Script's __main__. For internal use only.
+    Script's __main__.
     
     :return: None.
     """
@@ -505,7 +506,11 @@ def __main():
                 print("module {} has not attribute with name '{}'".format(mdl_name, mdl_attr_name))
                 continue
             print_info_about(getattr(mdl, mdl_attr_name))
+    if parsed_args.shell:
+        from .xiconsole import main
+
+        main()
 
 
 if __name__ == '__main__':
-    __main()
+    main()
